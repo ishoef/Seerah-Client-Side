@@ -1,5 +1,12 @@
-import React from 'react'
+import React from "react";
+import Hero from "./Hero/Hero";
 
 export default function Home() {
-  return <div className="max-w-7xl mx-auto">Home</div>;
+  return (
+    <section>
+      <div className="">
+        <Hero />
+      </div>
+    </section>
+  );
 }

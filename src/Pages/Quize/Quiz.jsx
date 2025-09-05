@@ -1,9 +1,10 @@
 import React from "react";
+import ComingSoonPage from "../../Components/ComingSoon/ComingSoon";
 
 export default function Quiz() {
   return (
     <section>
-      <div className="max-w-7xl mx-auto">this is the Quiz Page</div>
+      <ComingSoonPage />
     </section>
   );
 }

@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Seerah from "../Pages/Seerah/Seerah";
 import Quiz from "../Pages/Quize/Quiz";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import AuthLayout from "../Layouts/AuthLayout";
 
 export const router = createBrowserRouter([
   {
@@ -31,5 +32,9 @@ export const router = createBrowserRouter([
         element: <AboutUs />,
       },
     ],
+  },
+  {
+    path: "auth",
+    element: <AuthLayout />,
   },
 ]);

@@ -69,9 +69,12 @@ export default function Header() {
           </button>
 
           {/* Desktop Login Button */}
-          <button className="hidden md:block px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
+          <Link
+            to={"auth"}
+            className="cursor-pointer hidden md:block px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+          >
             লগইন
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -104,9 +107,12 @@ export default function Header() {
           </ul>
 
           {/* Mobile Login Button */}
-          <button className="mt-4 w-full px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
+          <Link
+            to="auth"
+            className="cursor-pointer mt-4 w-full px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+          >
             লগইন
-          </button>
+          </Link>
         </div>
       )}
     </header>

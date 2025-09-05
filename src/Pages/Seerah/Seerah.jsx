@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import ComingSoonPage from "../../Components/ComingSoon/ComingSoon";
 
 export default function Seerah() {
   return (
     <section>
-      <div className="max-w-7xl mx-auto">this is the seerah page</div>
+      <ComingSoonPage />
     </section>
   );
 }

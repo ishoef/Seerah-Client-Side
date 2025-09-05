@@ -27,10 +27,10 @@ export default function Hero() {
             জ্ঞান বৃদ্ধি করুন।
           </p>
           <div className="mt-8 flex justify-center md:justify-start gap-4">
-            <button className="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
+            <button className="cursor-pointer px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
               শুরু করুন
             </button>
-            <button className="px-6 py-3 rounded-lg bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+            <button className="cursor-pointer px-6 py-3 rounded-lg bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
               আরও জানুন
             </button>
           </div>

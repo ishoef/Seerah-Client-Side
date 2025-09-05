@@ -14,6 +14,7 @@ export default function GoogleLogin() {
     console.log("i am clicked for login with google");
     signInWithPopup(auth, provider).then((result) => {
       console.log(result.user.uid);
+      navigate(`${location.state ? locaiton.state : "/"}`);
     });
   };
 

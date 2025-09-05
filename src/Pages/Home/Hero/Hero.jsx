@@ -3,7 +3,7 @@ import React from "react";
 export default function Hero() {
   return (
     <section
-      className="min-h-screen 
+      className="
       relative 
       bg-gray-50 dark:bg-gray-900 
       overflow-hidden

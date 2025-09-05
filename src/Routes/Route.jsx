@@ -5,6 +5,8 @@ import Seerah from "../Pages/Seerah/Seerah";
 import Quiz from "../Pages/Quize/Quiz";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import AuthLayout from "../Layouts/AuthLayout";
+import LoginForm from "../Auth/Login/Login";
+import RegisterForm from "../Auth/Register/Register";
 
 export const router = createBrowserRouter([
   {
@@ -34,7 +36,18 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "auth",
+    path: "/auth",
     element: <AuthLayout />,
+    children: [
+      {
+        index: true,
+        path: "login",
+        element: <LoginForm />,
+      },
+      {
+        path: "register",
+        element: <RegisterForm />,
+      },
+    ],
   },
 ]);

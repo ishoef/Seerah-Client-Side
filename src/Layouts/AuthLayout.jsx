@@ -1,5 +1,6 @@
 import React from "react";
 import GoogleLogin from "../Components/SocialLogin/GoogleLogin/GoogleLogin";
+import { Outlet } from "react-router";
 
 export default function AuthLayout() {
   return (
@@ -16,7 +17,7 @@ export default function AuthLayout() {
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-transparent to-purple-100/30 dark:from-blue-900/40 dark:via-gray-900/40 dark:to-purple-900/40 pointer-events-none" />
-
+      <Outlet />
       {/* Google Login Button */}
       <div className="relative z-10">
         <GoogleLogin />

@@ -19,7 +19,7 @@ export default function SeerahIntroSection() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Title */}
         <h2 className="text-4xl font-extrabold text-gray-800 dark:text-white mb-2 text-center md:text-left">
-          ২. সীরাতের সংক্ষিপ্ত পরিচিতি
+          সীরাতের সংক্ষিপ্ত পরিচিতি
         </h2>
 
         {/* Points Cards */}

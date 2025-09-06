@@ -1,6 +1,7 @@
 import React from "react";
 import GoogleLogin from "../Components/SocialLogin/GoogleLogin/GoogleLogin";
 import { Outlet } from "react-router";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function AuthLayout() {
   return (
@@ -22,6 +23,7 @@ export default function AuthLayout() {
       <div className="relative z-10">
         <GoogleLogin />
       </div>
+      <Analytics />
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function SeerahIntroSection() {
     <section className="py-16 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
         {/* Title */}
-        <h2 className="text-4xl font-extrabold text-gray-800 dark:text-white mb-2 text-center md:text-left">
+        <h2 className="text-4xl font-extrabold text-gray-800 dark:text-white mb-5 text-center md:text-left">
           সীরাতের সংক্ষিপ্ত পরিচিতি
         </h2>
 

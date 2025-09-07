@@ -50,38 +50,50 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Right Section */}
+        {/* Right Section (Desktop + Mobile) */}
         <div className="flex items-center gap-3">
           <DarkModeToggle />
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
-          >
-            <span className="w-6 h-0.5 bg-gray-800 dark:bg-white"></span>
-            <span className="w-6 h-0.5 bg-gray-800 dark:bg-white"></span>
-            <span className="w-6 h-0.5 bg-gray-800 dark:bg-white"></span>
-          </button>
-
           {/* Desktop Login/Profile */}
-          {user && (
+          {user ? (
             <div className="hidden md:block">
               <ProfilePhoto />
             </div>
-          )}
-          {!user && (
+          ) : (
             <Link
-              to="/auth/login"
+              to="/auth"
               className="hidden md:block px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
             >
               লগইন
             </Link>
           )}
+
+          {/* Mobile Login/Profile / Hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Hamburger button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="flex flex-col gap-1.5 p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800"
+            >
+              <span className="w-6 h-0.5 bg-gray-800 dark:bg-white"></span>
+              <span className="w-6 h-0.5 bg-gray-800 dark:bg-white"></span>
+              <span className="w-6 h-0.5 bg-gray-800 dark:bg-white"></span>
+            </button>
+            {user ? (
+              <ProfilePhoto />
+            ) : (
+              <Link
+                to="/auth"
+                className="px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+              >
+                লগইন
+              </Link>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown Menu (nav links only) */}
       {menuOpen && (
         <div className="md:hidden relative bg-blue-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 px-4 pb-4">
           <ul className="flex flex-col space-y-3 text-lg font-medium">
@@ -103,21 +115,6 @@ export default function Header() {
               </li>
             ))}
           </ul>
-
-          {/* Mobile Login/Profile */}
-          <div className="mt-4">
-            {user ? (
-              <ProfilePhoto />
-            ) : (
-              <Link
-                to="/auth/login"
-                className="w-full block text-center px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
-                onClick={() => setMenuOpen(false)}
-              >
-                লগইন
-              </Link>
-            )}
-          </div>
         </div>
       )}
     </header>

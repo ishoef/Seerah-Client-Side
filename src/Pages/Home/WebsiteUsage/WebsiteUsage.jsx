@@ -11,7 +11,7 @@ export default function WebsiteUsage() {
     >
       {/* Title */}
       <div className="text-center mb-6">
-        <Title normalText={"ওয়েবসাইট"} blueText={"ব্যাবহারবিধি"} />
+        <Title normalText={"ওয়েবসাইট"} blueText={"ব্যবহারবিধি"} />
       </div>
 
       <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">

@@ -1,5 +1,5 @@
 import BookReading from "../../../illustration/BookReading";
-import PageTurner from "../../../illustration/pageTurner";
+import PageTurner from "../../../illustration/PageTurner";
 
 export default function OurLearningJourney() {
   return (

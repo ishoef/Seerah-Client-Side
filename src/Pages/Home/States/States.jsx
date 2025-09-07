@@ -10,12 +10,12 @@ import {
 import Title from "../../../Components/Title/Title";
 
 const stateData = [
-  { icon: "FaUser", label: "Visitors", amount: "50+" },
-  { icon: "FaClipboardList", label: "Exams Conducted", amount: "50+" },
-  { icon: "FaCertificate", label: "Certificates Issued", amount: "50+" },
-  { icon: "FaBook", label: "Courses", amount: "20+" },
-  { icon: "FaAward", label: "Achievements", amount: "15+" },
-  { icon: "FaUsers", label: "Active Students", amount: "100+" },
+  { icon: "FaUser", label: "মোট ভিজিটর", amount: "500+" },
+  { icon: "FaClipboardList", label: "পরীক্ষায় অংশগ্রহণকারী", amount: "450+" },
+  { icon: "FaCertificate", label: "সার্টিফিকেট অর্জনকারী", amount: "350+" },
+  { icon: "FaBook", label: "মোট অধ্যায়", amount: "20+" },
+  { icon: "FaAward", label: "বিশেষ সম্মাননা", amount: "15+" },
+  { icon: "FaUsers", label: "এক্টিভ পাঠক", amount: "100+" },
 ];
 
 const iconMap = {

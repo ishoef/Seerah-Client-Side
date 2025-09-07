@@ -3,6 +3,10 @@ import Hero from "./Hero/Hero";
 import States from "./States/States";
 import SeerahIntro from "./SeerahIntro/SeerahIntro";
 import WebsiteUsage from "./WebsiteUsage/WebsiteUsage";
+import HowItWorks from "./HowItWorks/HowItWorks";
+import SuccessStories from "./OurJourney/OurJourney";
+import OurLearningJourney from "./OurLearningJourney/OurLearningJourney";
+import CommunitySupport from "./CommunitySupport/CommunitySupport";
 
 export default function Home() {
   return (
@@ -10,7 +14,11 @@ export default function Home() {
       <Hero />
       <States />
       <WebsiteUsage />
+      <OurLearningJourney />
+      <CommunitySupport />
+      <HowItWorks />
       <SeerahIntro />
+      {/* <SuccessStories /> */}
     </section>
   );
 }

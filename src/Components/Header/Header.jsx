@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router";
 import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
+import { AuthContext } from "../../Context/AuthProvider";
+import ProfilePhoto from "../ProfilePhoto/ProfilePhoto";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { user } = useContext(AuthContext);
 
   return (
     <header
@@ -31,7 +34,7 @@ export default function Header() {
         <nav className="hidden md:block">
           <ul className="flex space-x-6 text-lg font-medium">
             {[
-              { path: "/", label: "হোম" },
+              { path: "/", label: "মূলপাতা" },
               { path: "/seerah", label: "সীরাত" },
               { path: "/quizes", label: "কুইজ" },
               { path: "/about", label: "আমাদের সম্পর্কে" },
@@ -69,12 +72,16 @@ export default function Header() {
           </button>
 
           {/* Desktop Login Button */}
-          <Link
-            to={"auth/login"}
-            className="cursor-pointer hidden md:block px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
-          >
-            লগইন
-          </Link>
+          {user ? (
+            <ProfilePhoto />
+          ) : (
+            <Link
+              to={"auth/login"}
+              className="cursor-pointer hidden md:block px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+            >
+              লগইন
+            </Link>
+          )}
         </div>
       </div>
 

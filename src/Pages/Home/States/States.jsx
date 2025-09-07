@@ -7,6 +7,7 @@ import {
   FaUsers,
   FaClipboardList,
 } from "react-icons/fa";
+import Title from "../../../Components/Title/Title";
 
 const stateData = [
   { icon: "FaUser", label: "Visitors", amount: "50+" },
@@ -28,7 +29,10 @@ const iconMap = {
 
 export default function States() {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900">
+    <section className="py-16 bg-gray-50 dark:bg-gray-900 border-b border-b-gray-200 dark:border-b-gray-800">
+      <div className="text-center mb-6">
+        <Title normalText={"ওয়েবসাইট"} blueText={"এক্টিভিটি"} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 gap-6">
         {stateData.map((state, idx) => {
           const Icon = iconMap[state.icon];

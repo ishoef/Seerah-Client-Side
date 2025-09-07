@@ -1,4 +1,5 @@
 import { BookOpen, Award } from "lucide-react";
+import Title from "../../../Components/Title/Title";
 
 export default function WebsiteUsage() {
   return (
@@ -9,12 +10,9 @@ export default function WebsiteUsage() {
       transition-colors duration-500"
     >
       {/* Title */}
-      <h2
-        className="text-2xl md:text-3xl font-bold text-center mb-10 
-        bg-gradient-to-r from-blue-500 to-blue-400 bg-clip-text text-transparent"
-      >
-        ওয়েবসাইট ব্যবহারবিধি
-      </h2>
+      <div className="text-center mb-6">
+        <Title normalText={"ওয়েবসাইট"} blueText={"ব্যাবহারবিধি"} />
+      </div>
 
       <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
         {/* কিভাবে পড়বেন */}

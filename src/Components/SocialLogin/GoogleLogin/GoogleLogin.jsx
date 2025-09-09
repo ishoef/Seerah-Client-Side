@@ -1,24 +1,27 @@
-import React, { use } from "react";
-import { FcGoogle } from "react-icons/fc"; // Google icon
+import React, { useContext } from "react";
+import { FcGoogle } from "react-icons/fc"; 
 import { AuthContext } from "../../../Context/AuthProvider";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router";
 import axios from "axios";
 
 export default function GoogleLogin() {
-  const { auth } = use(AuthContext);
+  const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+
   // google auth provider
   const provider = new GoogleAuthProvider();
+
   const handleLoginWithGoogle = async () => {
-    console.log("i am clicked for login with google");
+    console.log("Clicked Google login");
 
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      console.log(user?.uid);
+      console.log("Firebase UID:", user?.uid);
+
       if (user?.uid) {
         // Send User Data to Your Backend
         const response = await axios.post(
@@ -37,14 +40,18 @@ export default function GoogleLogin() {
           }
         );
 
-        console.log("User Saved", response.data);
+        if (response.status === 200 || response.status === 201) {
+          console.log("User saved successfully:", response.data);
+        } else {
+          console.warn("User not saved properly:", response);
+        }
       }
-    } catch (error) {
-      console.log("Google Login Error", error.message);
-    }
 
-    // Navigate After Login
-    navigate(`${location.state ? location.state : "/"}`);
+      // Navigate After Login
+      navigate(location.state?.from || "/");
+    } catch (error) {
+      console.error("Google Login Error:", error.code, error.message);
+    }
   };
 
   return (
@@ -55,7 +62,7 @@ export default function GoogleLogin() {
         className="cursor-pointer flex items-center gap-3 px-5 py-3 rounded-lg border border-gray-300 shadow hover:shadow-md transition bg-white dark:bg-gray-800"
       >
         <FcGoogle className="w-6 h-6" />
-        <span className=" text-gray-700 dark:text-gray-200 font-medium">
+        <span className="text-gray-700 dark:text-gray-200 font-medium">
           Continue with Google
         </span>
       </button>

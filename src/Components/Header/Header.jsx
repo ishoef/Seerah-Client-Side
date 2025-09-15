@@ -10,7 +10,7 @@ export default function Header() {
 
   const navLinks = [
     { path: "/", label: "মূলপাতা" },
-    { path: "/seerah", label: "সীরাত" },
+    { path: "/articles", label: "সীরাত" },
     { path: "/quizes", label: "কুইজ" },
     { path: "/about", label: "আমাদের সম্পর্কে" },
   ];

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Hero from "./Hero/Hero";
 import States from "./States/States";
 import SeerahIntro from "./SeerahIntro/SeerahIntro";
@@ -7,10 +7,15 @@ import HowItWorks from "./HowItWorks/HowItWorks";
 import SuccessStories from "./OurJourney/OurJourney";
 import OurLearningJourney from "./OurLearningJourney/OurLearningJourney";
 import CommunitySupport from "./CommunitySupport/CommunitySupport";
-import Footer from "../../Components/Footer/Footer";
 import FAQ from "./FAQ/FAQ";
+import { useLocation } from "react-router";
 
 export default function Home() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
   return (
     <section>
       <Hero />
@@ -21,7 +26,6 @@ export default function Home() {
       <HowItWorks />
       <SeerahIntro />
       <FAQ />
-      <Footer />
       {/* <SuccessStories /> */}
     </section>
   );

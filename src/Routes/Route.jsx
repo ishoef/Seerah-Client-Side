@@ -8,6 +8,7 @@ import AuthLayout from "../Layouts/AuthLayout";
 import LoginForm from "../Auth/Login/Login";
 import RegisterForm from "../Auth/Register/Register";
 import DashboardLayout from "../Layouts/DashboardLayout";
+import ArticleDetails from "../Pages/ArticleDetails/ArticleDetails";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/seerah",
+        path: "/articles",
         element: <Seerah />,
       },
       {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUs />,
+      },
+      {
+        path: "/articles/:id",
+        element: <ArticleDetails />,
       },
     ],
   },

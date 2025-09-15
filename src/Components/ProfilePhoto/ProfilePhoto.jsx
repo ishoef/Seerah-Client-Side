@@ -7,8 +7,6 @@ export default function ProfilePhoto() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  console.log(user);
-
   // Close dropdown on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {

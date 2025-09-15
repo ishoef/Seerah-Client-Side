@@ -52,7 +52,7 @@ export default function FAQ() {
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold dark:text-white">
-            প্রায়শই <span className="text-blue-600">জিজ্ঞাসিত প্রশ্নাবলী</span>
+            প্রায়শই <span className="text-blue-600 dark:text-blue-400">জিজ্ঞাসিত প্রশ্নাবলী</span>
           </h2>
           <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             আমাদের ব্যবহারকারীদের সাধারণ কিছু প্রশ্ন এবং তার বিস্তারিত উত্তর

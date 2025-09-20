@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SeerahHero() {
+export default function SeerahHero({ searchQuery, setSearchQuery }) {
   return (
     <section className="relative bg-blue-50 dark:bg-gray-900 mt-10 py-20 dark:border-b border-b-gray-800">
       {/* Background Gradient */}
@@ -39,8 +39,13 @@ export default function SeerahHero() {
               className="flex-1 px-4 py-3 border border-blue-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
               type="search"
               placeholder="সন্ধান করুন..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow transition">
+            <button
+              className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow transition"
+              onClick={() => console.log("Searching for:", searchQuery)}
+            >
               🔍
             </button>
           </div>

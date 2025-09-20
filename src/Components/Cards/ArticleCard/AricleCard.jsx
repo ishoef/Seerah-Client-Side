@@ -24,7 +24,7 @@ export default function AricleCard({ article, index }) {
           {article.category || "প্রাথমিক জীবন"}
         </span>
         <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm gap-1">
-          <Clock size={14} /> {article.timing || "৫ মিনিট"}
+          <Clock size={14} /> {article.timing.text || "৫ মিনিট"}
         </div>
       </div>
       {/* Title */}

@@ -25,6 +25,26 @@ const handleLoginWithGoogle = async () => {
 
     if (!user?.uid) throw new Error("No user data returned from Google.");
 
+    // Optional: show success alert
+    Swal.fire({
+      title: `Welcome, ${user.displayName}!`,
+      text: "You have successfully logged in.",
+      icon: "success",
+      iconColor: "#124170", // Orange icon to match your theme
+      background: "#DDF4E7", // Clean white background
+      backdrop: "rgba(0,0,0,0.3)", // Slight dark overlay
+      timer: 2000,
+      timerProgressBar: true, // Show progress bar
+      showConfirmButton: false,
+      customClass: {
+        title: "text-xl font-bold text-orange-600",
+        content: "text-gray-700",
+      },
+    });
+
+    // Redirect after login
+    navigate(`${location.state ? location.state : "/"}`);
+
     // Prepare payload for backend
     const payload = {
       name: user.displayName,
@@ -51,29 +71,6 @@ const handleLoginWithGoogle = async () => {
         : "Existing user logged in.",
       response.data
     );
-
-    // Optional: show success alert
-    Swal.fire({
-      title: `Welcome, ${user.displayName}!`,
-      text: "You have successfully logged in.",
-      icon: "success",
-      iconColor: "#124170", // Orange icon to match your theme
-      background: "#DDF4E7", // Clean white background
-      backdrop: "rgba(0,0,0,0.3)", // Slight dark overlay
-      timer: 2000000,
-      timerProgressBar: true, // Show progress bar
-      showConfirmButton: false,
-      customClass: {
-        title: "text-xl font-bold text-orange-600",
-        content: "text-gray-700",
-      },
-    });
-
-
-
-    // Redirect after login
-    const redirectPath = location.state?.from || "/";
-    navigate(redirectPath);
   } catch (error) {
     console.error("Google Login Error:", error.code, error.message);
 

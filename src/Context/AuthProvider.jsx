@@ -14,17 +14,17 @@ const auth = getAuth(app);
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loadingAuth, setLoadingAuth] = useState(true);
 
   // Create a new user
   const createUser = (email, password) => {
-    setLoading(true);
+    setLoadingAuth(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // Login a existing user
   const login = (email, password) => {
-    setLoading(true);
+    setLoadingAuth(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -41,7 +41,7 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      setLoadingAuth(false);
     });
 
     return () => {
@@ -53,8 +53,8 @@ export default function AuthProvider({ children }) {
     auth,
     user,
     setUser,
-    loading,
-    setLoading,
+    loadingAuth,
+    setLoadingAuth,
     createUser,
     login,
     logOut,

@@ -9,9 +9,13 @@ import OurLearningJourney from "./OurLearningJourney/OurLearningJourney";
 import CommunitySupport from "./CommunitySupport/CommunitySupport";
 import FAQ from "./FAQ/FAQ";
 import { useLocation } from "react-router";
+import useUserRole from "../../Hooks/useUserRole/useUserRole";
 
 export default function Home() {
   const { pathname } = useLocation();
+
+  const { role } = useUserRole();
+  console.log(role);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });

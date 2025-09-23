@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AlertModal from "../../../Components/AlertModal/AlertModal";
+import { Link } from "react-router";
 
 export default function Hero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +33,17 @@ export default function Hero() {
             সচেতন জীবনযাপনের পথে পরিচালিত করবে।
           </p>
           <div className="mt-8 flex justify-center md:justify-start gap-4">
-            <button onClick={() => setIsOpen(true)} className="cursor-pointer px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
+            <Link
+              to={"articles"}
+              // onClick={() => setIsOpen(true)}
+              className="cursor-pointer px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+            >
               শুরু করুন
-            </button>
-            <button onClick={() => setIsOpen(true)} className="cursor-pointer px-6 py-3 rounded-lg bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition">
+            </Link>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="cursor-pointer px-6 py-3 rounded-lg bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition"
+            >
               আরও জানুন
             </button>
           </div>
@@ -51,7 +59,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {isOpen && <AlertModal setIsOpen={setIsOpen}/>}
+      {isOpen && <AlertModal setIsOpen={setIsOpen} />}
     </section>
   );
 }

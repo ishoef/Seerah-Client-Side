@@ -15,6 +15,7 @@ import UserDashboard from "../Dashboard/UserDashboard/UserDashboard";
 import Loader from "../Components/Loader/Loader/Loader";
 import Overview from "../Dashboard/AdminDashboard/Overview/Overview";
 import UserProfile from "../Dashboard/UserDashboard/UserProfile/UserProfile";
+import AllUsers from "../Dashboard/AdminDashboard/AllUsers/AllUsers";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function DashboardRedirect() {
@@ -23,7 +24,7 @@ function DashboardRedirect() {
   if (loading) return <Loader />;
 
   if (role === "admin") {
-    return <Navigate to="/dashboard/admin" replace />;
+    return <Navigate to="/dashboard/admin/overview" replace />;
   } else if (role === "user") {
     return <Navigate to="/dashboard/user" replace />;
   } else {
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
           {
             path: "overview",
             element: <Overview />,
+          },
+          {
+            path: "all-users",
+            element: <AllUsers />,
           },
         ],
       },

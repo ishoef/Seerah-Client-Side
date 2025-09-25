@@ -92,13 +92,13 @@ export default function AdminDashboard() {
             <div className="flex flex-col space-y-2">
               <button
                 onClick={() => navigate("/")}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-gray-700 transition"
+                className="cursor-pointer flex items-center space-x-2 px-3 py-2 rounded-lg text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-gray-700 transition"
               >
                 <FaHome /> <span>Go Home</span>
               </button>
               <button
                 onClick={handleLogout}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-red-600 hover:bg-red-100 dark:hover:bg-gray-700 transition"
+                className="cursor-pointer flex items-center space-x-2 px-3 py-2 rounded-lg text-red-600 hover:bg-red-100 dark:hover:bg-gray-700 transition"
               >
                 <FaSignOutAlt /> <span>Logout</span>
               </button>

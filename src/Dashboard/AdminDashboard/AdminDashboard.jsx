@@ -10,6 +10,8 @@ import {
   FaTachometerAlt,
   FaBars,
 } from "react-icons/fa";
+import { MdLeaderboard, MdQuiz } from "react-icons/md";
+
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import DarkModeToggle from "../../Components/DarkModeToggle/DarkModeToggle";
@@ -64,11 +66,23 @@ export default function AdminDashboard() {
               icon={<FaFileAlt />}
               label="Add Articles"
             />
+            <NavItem
+              to="all-articles"
+              icon={<FaFileAlt />}
+              label="All Articles"
+            />
             <NavItem to="all-users" icon={<FaUsers />} label="All Users" />
             <NavItem
               to="all-admins"
               icon={<FaUserShield />}
               label="All Admins"
+            />
+            <NavItem to="all-quizes" icon={<MdQuiz />} label="All Quizes" />
+            <NavItem to="add-quizes" icon={<MdQuiz />} label="Add Quizes" />
+            <NavItem
+              to="leaderboard"
+              icon={<MdLeaderboard />}
+              label="Leaderboard"
             />
           </nav>
 

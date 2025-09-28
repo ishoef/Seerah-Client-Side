@@ -17,7 +17,7 @@ import {
  * - Wire deleteUserApi / banUserApi to server endpoints
  */
 
-const PAGE_SIZE = 8;
+const PAGE_SIZE = 10;
 
 export default function AllUsers() {
   const [users, setUsers] = useState(dummyUsers()); // replace with API fetch

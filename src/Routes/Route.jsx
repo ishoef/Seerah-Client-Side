@@ -16,6 +16,12 @@ import Loader from "../Components/Loader/Loader/Loader";
 import Overview from "../Dashboard/AdminDashboard/Overview/Overview";
 import UserProfile from "../Dashboard/UserDashboard/UserProfile/UserProfile";
 import AllUsers from "../Dashboard/AdminDashboard/AllUsers/AllUsers";
+import AllArticles from "../Dashboard/AdminDashboard/AllArticles/AllArticles";
+import AllQuizes from "../Dashboard/AdminDashboard/AllQuizes/AllQuizes";
+import AddQuizes from "../Dashboard/AdminDashboard/AddQuizes/AddQuizes";
+import AddArticle from "../Dashboard/AdminDashboard/AddArticle/AddArticle";
+import AllAdmin from "../Dashboard/AdminDashboard/AllAdmin/AllAdmin";
+import Leaderboard from "../Dashboard/AdminDashboard/Leaderboard/Leaderboard";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function DashboardRedirect() {
@@ -101,6 +107,30 @@ export const router = createBrowserRouter([
           {
             path: "all-users",
             element: <AllUsers />,
+          },
+          {
+            path: "all-articles",
+            element: <AllArticles />,
+          },
+          {
+            path: "add-articles",
+            element: <AddArticle />,
+          },
+          {
+            path: "all-quizes",
+            element: <AllQuizes />,
+          },
+          {
+            path: "add-quizes",
+            element: <AddQuizes />,
+          },
+          {
+            path: "all-admins",
+            element: <AllAdmin />,
+          },
+          {
+            path: "leaderboard",
+            element: <Leaderboard />,
           },
         ],
       },

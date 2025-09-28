@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
+import useArticles from "../../Hooks/useArticles/useArticles";
+import NextPreview from "../../Components/NextPreview/NextPreview";
 
 export default function ArticleDetails() {
   const location = useLocation();
@@ -8,6 +10,11 @@ export default function ArticleDetails() {
   const { pathname } = location;
   const fromScrollY = location.state?.fromScrollY || 0;
   const article = location.state?.article;
+
+  const { articles } = useArticles();
+
+  // --- Find current article index ---
+  const currentIndex = articles.findIndex((a) => a.id === article?.id);
 
   // --- Timer States ---
   const [timeLeft, setTimeLeft] = useState(article?.timing.minutes * 60 || 0);
@@ -57,6 +64,14 @@ export default function ArticleDetails() {
   // Progress calculation
   const progress =
     totalSeconds > 0 ? ((totalSeconds - timeLeft) / totalSeconds) * 100 : 0;
+
+  // --- Handle Navigation (Next / Previous) ---
+  // const goToArticle = (index) => {
+  //   if (index < 0 || index >= articles.length) return;
+  //   navigate(`/articles/${articles[index].id}`, {
+  //     state: { article: articles[index], fromScrollY },
+  //   });
+  // };
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 mt-10 py-12 px-4 md:px-20">
@@ -109,6 +124,13 @@ export default function ArticleDetails() {
           <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
             {article.articleText}
           </p>
+
+          {/* --- Nex-Preview Buttons --- */}
+          <NextPreview
+            currentIndex={currentIndex}
+            items={articles}
+            fromScrollY={fromScrollY}
+          />
         </div>
       </div>
 
@@ -120,6 +142,13 @@ export default function ArticleDetails() {
             <p className="mb-6">
               আপনি নির্ধারিত {article.timing.text} সময়ের মধ্যে পড়া শেষ করেছেন।
             </p>
+            <div className="pb-5">
+              <NextPreview
+                currentIndex={currentIndex}
+                items={articles}
+                fromScrollY={fromScrollY}
+              />
+            </div>
             <button
               onClick={() => setShowNotification(false)}
               className="px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md transition"

@@ -104,9 +104,10 @@ export default function AllUsers() {
   return (
     <div className="space-y-6 p-4">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+        {/* Left: Title & Description */}
         <div>
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
             All Users
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
@@ -114,35 +115,54 @@ export default function AllUsers() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 w-full sm:w-auto">
-          <div className="relative w-full sm:w-80">
-            <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-              <FaSearch />
-            </span>
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setPage(1);
-              }}
-              placeholder="Search by name, email or phone..."
-              className="w-full pl-10 pr-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-          </div>
+        {/* Right: Search */}
+        <div className="relative w-full sm:w-80">
+          <span className="absolute inset-y-0 left-3 flex items-center text-gray-400 dark:text-gray-500">
+            <FaSearch className="w-4 h-4" />
+          </span>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setPage(1);
+            }}
+            placeholder="Search by name, email or phone..."
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 
+        bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 
+        placeholder-gray-400 dark:placeholder-gray-500 
+        focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
+          />
         </div>
       </div>
 
-      {/* Quick summary */}
-      <div className="flex flex-wrap gap-4">
-        <SmallKpi label="Total Users" value={users.length} />
+      {/* Quick summary cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+        {/* Total Users */}
+        <SmallKpi
+          label="Total Users"
+          value={users.length}
+          className="p-5 rounded-xl shadow-md bg-gradient-to-r from-blue-500 to-blue-600 text-white"
+          labelClass="text-sm opacity-90"
+          valueClass="text-2xl font-bold"
+        />
+
+        {/* Active Users */}
         <SmallKpi
           label="Active"
           value={users.filter((u) => u.status === "Active").length}
+          className="p-5 rounded-xl shadow-md bg-gradient-to-r from-green-500 to-green-600 text-white"
+          labelClass="text-sm opacity-90"
+          valueClass="text-2xl font-bold"
         />
+
+        {/* Banned Users */}
         <SmallKpi
           label="Banned"
           value={users.filter((u) => u.status === "Banned").length}
+          className="p-5 rounded-xl shadow-md bg-gradient-to-r from-red-500 to-red-600 text-white"
+          labelClass="text-sm opacity-90"
+          valueClass="text-2xl font-bold"
         />
       </div>
 

@@ -60,7 +60,6 @@ export default function AdminDashboard() {
               icon={<FaTachometerAlt />}
               label="Overview"
             />
-            <NavItem to="add-content" icon={<FaPlus />} label="Add Content" />
             <NavItem
               to="add-articles"
               icon={<FaFileAlt />}

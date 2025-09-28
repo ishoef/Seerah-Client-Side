@@ -139,31 +139,26 @@ export default function AllUsers() {
       {/* Quick summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
         {/* Total Users */}
-        <SmallKpi
-          label="Total Users"
-          value={users.length}
-          className="p-5 rounded-xl shadow-md bg-gradient-to-r from-blue-500 to-blue-600 text-white"
-          labelClass="text-sm opacity-90"
-          valueClass="text-2xl font-bold"
-        />
+        <div className="p-5 rounded-xl shadow-md bg-blue-500 dark:bg-blue-700 text-white transition-colors duration-300">
+          <p className="text-sm opacity-90 dark:opacity-80">Total Users</p>
+          <p className="text-2xl font-bold">{users.length}</p>
+        </div>
 
         {/* Active Users */}
-        <SmallKpi
-          label="Active"
-          value={users.filter((u) => u.status === "Active").length}
-          className="p-5 rounded-xl shadow-md bg-gradient-to-r from-green-500 to-green-600 text-white"
-          labelClass="text-sm opacity-90"
-          valueClass="text-2xl font-bold"
-        />
+        <div className="p-5 rounded-xl shadow-md bg-green-500 dark:bg-green-700 text-white transition-colors duration-300">
+          <p className="text-sm opacity-90 dark:opacity-80">Active</p>
+          <p className="text-2xl font-bold">
+            {users.filter((u) => u.status === "Active").length}
+          </p>
+        </div>
 
         {/* Banned Users */}
-        <SmallKpi
-          label="Banned"
-          value={users.filter((u) => u.status === "Banned").length}
-          className="p-5 rounded-xl shadow-md bg-gradient-to-r from-red-500 to-red-600 text-white"
-          labelClass="text-sm opacity-90"
-          valueClass="text-2xl font-bold"
-        />
+        <div className="p-5 rounded-xl shadow-md bg-red-500 dark:bg-red-700 text-white transition-colors duration-300">
+          <p className="text-sm opacity-90 dark:opacity-80">Banned</p>
+          <p className="text-2xl font-bold">
+            {users.filter((u) => u.status === "Banned").length}
+          </p>
+        </div>
       </div>
 
       {/* Table */}

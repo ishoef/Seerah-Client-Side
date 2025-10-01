@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import useArticles from "../../Hooks/useArticles/useArticles";
 import NextPreview from "../../Components/NextPreview/NextPreview";
+import RelatedArticles from "../../Components/RelatedArticles/RelatedArticles";
 
 export default function ArticleDetails() {
   const location = useLocation();
@@ -10,6 +11,7 @@ export default function ArticleDetails() {
   const { pathname } = location;
   const fromScrollY = location.state?.fromScrollY || 0;
   const article = location.state?.article;
+  console.log(article);
 
   const { articles } = useArticles();
 
@@ -17,9 +19,18 @@ export default function ArticleDetails() {
   const currentIndex = articles.findIndex((a) => a.id === article?.id);
 
   // --- Timer States ---
-  const [timeLeft, setTimeLeft] = useState(article?.timing.minutes * 60 || 0);
-  const totalSeconds = article?.timing.minutes * 60 || 0;
+  const [timeLeft, setTimeLeft] = useState(0); // 🔥 changed (init as 0 to avoid NaN)
+  const totalSeconds = article?.timing?.minutes
+    ? article.timing.minutes * 60
+    : 0; // 🔥 changed (safe check)
   const [showNotification, setShowNotification] = useState(false);
+
+  // set initial timeLeft when article available
+  useEffect(() => {
+    if (article?.timing?.minutes) {
+      setTimeLeft(article.timing.minutes * 60); // 🔥 changed (initialize after article load)
+    }
+  }, [article]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -28,17 +39,19 @@ export default function ArticleDetails() {
   useEffect(() => {
     if (!article) return;
 
-    if (timeLeft <= 0) {
-      setShowNotification(true);
-      return;
-    }
-
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          setShowNotification(true);
+          return 0;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, article]);
+  }, [article]);
 
   if (!article) {
     return (
@@ -65,14 +78,6 @@ export default function ArticleDetails() {
   const progress =
     totalSeconds > 0 ? ((totalSeconds - timeLeft) / totalSeconds) * 100 : 0;
 
-  // --- Handle Navigation (Next / Previous) ---
-  // const goToArticle = (index) => {
-  //   if (index < 0 || index >= articles.length) return;
-  //   navigate(`/articles/${articles[index].id}`, {
-  //     state: { article: articles[index], fromScrollY },
-  //   });
-  // };
-
   return (
     <section className="min-h-screen bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 mt-10 py-12 px-4 md:px-20">
       <div className="max-w-5xl mx-auto">
@@ -87,9 +92,12 @@ export default function ArticleDetails() {
 
         <div className="mx-auto bg-white dark:bg-gray-900 text-justify rounded-2xl shadow-lg p-8 md:p-12 transition-colors">
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-extrabold text-blue-700 dark:text-blue-400 mb-6 text-center md:text-left">
-            {article.title}
-          </h1>
+          <div className="flex justify-between">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-blue-700 dark:text-blue-400 mb-6 text-center md:text-left">
+              {article.title}
+            </h1>
+            <p className="px-3 py-1 bg-gray-200 rounded-2xl w-fit h-fit text-gray-700">{article.category}</p>
+          </div>
 
           {/* Info Box */}
           <div className="flex flex-wrap justify-center md:justify-start gap-6 mb-8 text-gray-600 dark:text-gray-300">
@@ -125,7 +133,7 @@ export default function ArticleDetails() {
             {article.articleText}
           </p>
 
-          {/* --- Nex-Preview Buttons --- */}
+          {/* --- Next-Preview Buttons --- */}
           <NextPreview
             currentIndex={currentIndex}
             items={articles}
@@ -158,6 +166,9 @@ export default function ArticleDetails() {
           </div>
         </div>
       )}
+
+      {/* Related Articles */}
+      <RelatedArticles article={article} articles={articles} />
     </section>
   );
 }

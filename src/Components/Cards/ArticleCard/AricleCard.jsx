@@ -13,6 +13,7 @@ export default function AricleCard({ article, index }) {
       state: { article, fromScrollY: scrollY },
     });
   };
+  
   return (
     <div
       key={index}
